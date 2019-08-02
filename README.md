@@ -4,7 +4,9 @@ A simple Web Service (SOAP) developed using Spring Boot.
 
 [:construction:]
 
-The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`https://localhost:8443/h2-console`](https://localhost:8443/h2-console) and use `admin` as password.
+The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`https://localhost:8443/h2-console`](https://localhost:8443/h2-console) and use `admin` as password. 
+
+> **NOTE: All defined service operations are fronted by Basic Authentication.** Please refer [Operations section](#operations)
 
 ## Web Service
 
@@ -28,6 +30,11 @@ https://localhost:8443/ws/developers.wsdl
 ```
 
 ### Operations
+
+The operations are fronted by a Basic Authentication. Use the following credentials when working with the listed dev-service (web service) operations
+
+* username: `hydrogen`
+* password: `pandaAsthma`
 
 #### Developer
 
