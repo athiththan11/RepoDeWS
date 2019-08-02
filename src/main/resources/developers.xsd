@@ -52,11 +52,35 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getRepo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRepoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs='0' maxOccurs='unbounded' name="repos" type="tns:repo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="developer">
         <xs:sequence>
             <xs:element name="username" type="xs:string"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="repo">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="forks" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
