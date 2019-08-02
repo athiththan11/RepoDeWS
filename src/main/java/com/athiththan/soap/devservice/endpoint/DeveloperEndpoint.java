@@ -1,5 +1,12 @@
 package com.athiththan.soap.devservice.endpoint;
 
+import java.util.Optional;
+
+import com.athiththan.soap.devservice.model.AddDeveloper;
+import com.athiththan.soap.devservice.model.AddDeveloperResponse;
+import com.athiththan.soap.devservice.model.DeleteDeveloper;
+import com.athiththan.soap.devservice.model.DeleteDeveloperResponse;
+import com.athiththan.soap.devservice.model.Developer;
 import com.athiththan.soap.devservice.model.GetDeveloper;
 import com.athiththan.soap.devservice.model.GetDeveloperResponse;
 import com.athiththan.soap.devservice.repository.DeveloperRepository;
@@ -26,8 +33,39 @@ public class DeveloperEndpoint {
         return response;
     }
 
-    // @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart =
-    // "addDeveloper")
-    // @ResponsePayload
-    // public AddDeveloperResponse
+    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "addDeveloper")
+    @ResponsePayload
+    public AddDeveloperResponse addDeveloper(@RequestPayload AddDeveloper request) {
+        AddDeveloperResponse response = new AddDeveloperResponse();
+
+        if (developerRepository.findByUsername(request.getUsername()).isPresent()) {
+            response.setDeveloper(null);
+            return response;
+        }
+
+        Developer dev = new Developer();
+        dev.setUsername(request.getUsername());
+        dev.setName(request.getName());
+        dev.setEmail(request.getEmail());
+
+        response.setDeveloper(developerRepository.save(dev));
+        return response;
+    }
+
+    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "deleteDeveloper")
+    @ResponsePayload
+    public DeleteDeveloperResponse deleteDeveloper(@RequestPayload DeleteDeveloper request) {
+        DeleteDeveloperResponse response = new DeleteDeveloperResponse();
+        Optional<Developer> dev = developerRepository.findByUsername(request.getUsername());
+
+        if (dev.isPresent()) {
+            developerRepository.delete(dev.get());
+            response.setMessage("Success");
+        } else {
+            response.setMessage("Resource not found");
+        }
+
+        return response;
+    }
+
 }

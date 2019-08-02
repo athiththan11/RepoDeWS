@@ -13,9 +13,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * <p>
  * Java class for anonymous complex type.
@@ -41,12 +38,14 @@ import lombok.Setter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "developer" })
 @XmlRootElement(name = "getDeveloperResponse")
-@Getter
-@Setter
 public class GetDeveloperResponse {
 
     @XmlElement(required = true)
     protected Developer developer;
+
+    public Developer getDeveloper() {
+        return developer;
+    }
 
     public void setDeveloper(Developer developer) {
         this.developer = developer;
