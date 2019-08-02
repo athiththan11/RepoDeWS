@@ -4,7 +4,7 @@ A simple Web Service (SOAP) developed using Spring Boot.
 
 [:construction:]
 
-The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`http://localhost:8080/h2-console`](http://localhost:8080/h2-console) and use `admin` as password.
+The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`https://localhost:8443/h2-console`](https://localhost:8443/h2-console) and use `admin` as password.
 
 ## Web Service
 
@@ -24,7 +24,7 @@ This sample WS contains the following models and supports CRUD operations on the
 Access WSDL definition by navigating to the following link
 
 ```http
-http://localhost:8080/ws/developers.wsdl
+https://localhost:8443/ws/developers.wsdl
 ```
 
 ### Operations
