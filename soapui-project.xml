@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7dffd952-ce1c-4a5a-b85e-0f0521456291" activeEnvironment="Default" name="DevMgt Service" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a1ca5f77-de04-43d2-a393-9c7725461657" wsaVersion="NONE" name="DevelopersPortSoap11" type="wsdl" bindingName="{http://www.athiththan.com/devservice}DevelopersPortSoap11" soapVersion="1_1" anonymous="optional" definition="https://localhost:8443/ws/developers.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://localhost:8443/ws/developers.wsdl"><con:part><con:url>https://localhost:8443/ws/developers.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.athiththan.com/devservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.athiththan.com/devservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.athiththan.com/devservice">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.athiththan.com/devservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getDeveloperRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDeveloperResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="developer" type="tns:developer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addDeveloperRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addDeveloperResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="developer" type="tns:developer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteDeveloperRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteDeveloperResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getRepoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getRepoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="repos" type="tns:repo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="developer">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="repo">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="username" type="xs:string"/>
+          <xs:element name="forks" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDeveloperRequest">
+    <wsdl:part element="tns:getDeveloperRequest" name="getDeveloperRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDeveloperResponse">
+    <wsdl:part element="tns:addDeveloperResponse" name="addDeveloperResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDeveloperResponse">
+    <wsdl:part element="tns:deleteDeveloperResponse" name="deleteDeveloperResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRepoRequest">
+    <wsdl:part element="tns:getRepoRequest" name="getRepoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeveloperResponse">
+    <wsdl:part element="tns:getDeveloperResponse" name="getDeveloperResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDeveloperRequest">
+    <wsdl:part element="tns:addDeveloperRequest" name="addDeveloperRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDeveloperRequest">
+    <wsdl:part element="tns:deleteDeveloperRequest" name="deleteDeveloperRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRepoResponse">
+    <wsdl:part element="tns:getRepoResponse" name="getRepoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DevelopersPort">
+    <wsdl:operation name="getDeveloper">
+      <wsdl:input message="tns:getDeveloperRequest" name="getDeveloperRequest"></wsdl:input>
+      <wsdl:output message="tns:getDeveloperResponse" name="getDeveloperResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDeveloper">
+      <wsdl:input message="tns:addDeveloperRequest" name="addDeveloperRequest"></wsdl:input>
+      <wsdl:output message="tns:addDeveloperResponse" name="addDeveloperResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDeveloper">
+      <wsdl:input message="tns:deleteDeveloperRequest" name="deleteDeveloperRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteDeveloperResponse" name="deleteDeveloperResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepo">
+      <wsdl:input message="tns:getRepoRequest" name="getRepoRequest"></wsdl:input>
+      <wsdl:output message="tns:getRepoResponse" name="getRepoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DevelopersPortSoap11" type="tns:DevelopersPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDeveloper">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getDeveloperRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeveloperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDeveloper">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addDeveloperRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDeveloperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDeveloper">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteDeveloperRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteDeveloperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getRepoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRepoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DevelopersPortService">
+    <wsdl:port binding="tns:DevelopersPortSoap11" name="DevelopersPortSoap11">
+      <soap:address location="https://localhost:8443/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://localhost:8443/ws</con:endpoint></con:endpoints><con:operation id="200c9a1b-13d1-46c5-87fd-9b72df51c621" isOneWay="false" action="" name="addDeveloper" bindingOperationName="addDeveloper" type="Request-Response" outputName="addDeveloperResponse" inputName="addDeveloperRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="db91e2d3-66e2-4672-b384-ec5cf9e83748" name="Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://www.athiththan.com/devservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <dev:addDeveloperRequest>\r
+         <dev:username>johndoe</dev:username>\r
+         <dev:name>John Doe</dev:name>\r
+         <dev:email>john@doe.usr</dev:email>\r
+      </dev:addDeveloperRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/addDeveloperRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d28547cb-ad36-43ea-9be2-eb5a8bfc51f4" isOneWay="false" action="" name="deleteDeveloper" bindingOperationName="deleteDeveloper" type="Request-Response" outputName="deleteDeveloperResponse" inputName="deleteDeveloperRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f51413a6-6839-40e7-a66a-1a3a0f6e9fee" name="Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://www.athiththan.com/devservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <dev:deleteDeveloperRequest>\r
+         <dev:username>johndoe</dev:username>\r
+      </dev:deleteDeveloperRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/deleteDeveloperRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e6276099-7008-4b19-a48f-2b991db4b637" isOneWay="false" action="" name="getDeveloper" bindingOperationName="getDeveloper" type="Request-Response" outputName="getDeveloperResponse" inputName="getDeveloperRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="173a1ae5-6248-43fc-9d82-7a193fe48058" name="Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://www.athiththan.com/devservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <dev:getDeveloperRequest>\r
+         <dev:username>athiththan11</dev:username>\r
+      </dev:getDeveloperRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/getDeveloperRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3d8d47e8-11c1-431c-978f-c1294a77ecb3" isOneWay="false" action="" name="getRepo" bindingOperationName="getRepo" type="Request-Response" outputName="getRepoResponse" inputName="getRepoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="68329cb4-ffb6-4b4c-8f0d-a09a07f81b7e" name="Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://www.athiththan.com/devservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <dev:getRepoRequest>\r
+         <dev:username>athiththan11</dev:username>\r
+      </dev:getRepoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/getRepoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
