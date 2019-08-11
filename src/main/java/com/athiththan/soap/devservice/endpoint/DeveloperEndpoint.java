@@ -2,12 +2,12 @@ package com.athiththan.soap.devservice.endpoint;
 
 import java.util.Optional;
 
-import com.athiththan.soap.devservice.model.AddDeveloper;
+import com.athiththan.soap.devservice.model.AddDeveloperRequest;
 import com.athiththan.soap.devservice.model.AddDeveloperResponse;
-import com.athiththan.soap.devservice.model.DeleteDeveloper;
+import com.athiththan.soap.devservice.model.DeleteDeveloperRequest;
 import com.athiththan.soap.devservice.model.DeleteDeveloperResponse;
 import com.athiththan.soap.devservice.model.Developer;
-import com.athiththan.soap.devservice.model.GetDeveloper;
+import com.athiththan.soap.devservice.model.GetDeveloperRequest;
 import com.athiththan.soap.devservice.model.GetDeveloperResponse;
 import com.athiththan.soap.devservice.repository.DeveloperRepository;
 import com.athiththan.soap.devservice.util.DevServiceConstant;
@@ -24,18 +24,18 @@ public class DeveloperEndpoint {
     @Autowired
     private DeveloperRepository developerRepository;
 
-    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "getDeveloper")
+    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "getDeveloperRequest")
     @ResponsePayload
-    public GetDeveloperResponse getDeveloper(@RequestPayload GetDeveloper request) {
+    public GetDeveloperResponse getDeveloper(@RequestPayload GetDeveloperRequest request) {
         GetDeveloperResponse response = new GetDeveloperResponse();
         response.setDeveloper(developerRepository.findByUsername(request.getUsername()).orElseThrow(null));
 
         return response;
     }
 
-    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "addDeveloper")
+    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "addDeveloperRequest")
     @ResponsePayload
-    public AddDeveloperResponse addDeveloper(@RequestPayload AddDeveloper request) {
+    public AddDeveloperResponse addDeveloper(@RequestPayload AddDeveloperRequest request) {
         AddDeveloperResponse response = new AddDeveloperResponse();
 
         if (developerRepository.findByUsername(request.getUsername()).isPresent()) {
@@ -52,9 +52,9 @@ public class DeveloperEndpoint {
         return response;
     }
 
-    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "deleteDeveloper")
+    @PayloadRoot(namespace = DevServiceConstant.NAMESPACE_URI, localPart = "deleteDeveloperRequest")
     @ResponsePayload
-    public DeleteDeveloperResponse deleteDeveloper(@RequestPayload DeleteDeveloper request) {
+    public DeleteDeveloperResponse deleteDeveloper(@RequestPayload DeleteDeveloperRequest request) {
         DeleteDeveloperResponse response = new DeleteDeveloperResponse();
         Optional<Developer> dev = developerRepository.findByUsername(request.getUsername());
 
