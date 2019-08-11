@@ -4,7 +4,7 @@ A simple Web Service (SOAP) developed using Spring Boot.
 
 [:construction:]
 
-The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`https://localhost:8443/h2-console`](https://localhost:8443/h2-console) and use `admin` as password. 
+The tool uses an in-memory (runtime) temporary H2 database to store sample data for demos. The H2 console is accessible from [`https://localhost:8443/h2-console`](https://localhost:8443/h2-console) and use `admin` as password.
 
 > **NOTE: All defined service operations are fronted by Basic Authentication.** Please refer [Operations section](#operations)
 
@@ -19,6 +19,7 @@ This sample WS contains the following models and supports CRUD operations on the
   * getDeveloper
   * deleteDeveloper
 * Repo
+  * addRepo
   * getRepo
 
 ### WSDL
@@ -41,37 +42,47 @@ The operations are fronted by a Basic Authentication. Use the following credenti
 ##### Add Developer
 
 ```xml
-<addDeveloper>
+<addDeveloperRequest>
     <username>johndoe</username>
     <name>John Doe</name>
     <email>john@doe.com</email>
-</addDeveloper>
+</addDeveloperRequest>
 ```
 
 ##### Get Developer
 
 ```xml
-<getDeveloper>
+<getDeveloperRequest>
     <username>johndoe</username>
-</getDeveloper>
+</getDeveloperRequest>
 ```
 
 ##### Delete Developer
 
 ```xml
-<deleteDeveloper>
+<deleteDeveloperRequest>
     <username>johndoe</username>
-</deleteDeveloper>
+</deleteDeveloperRequest>
 ```
 
 #### Repo
 
+#### Add Repo
+
+```xml
+<dev:addRepoRequest>
+    <dev:name>repodews</dev:name>
+    <dev:username>athiththan11</dev:username>
+    <dev:forks>0</dev:forks>
+</dev:addRepoRequest>
+```
+
 ##### Get Repo
 
 ```xml
-<getRepo>
+<getRepoRequest>
     <username>johndoe</username>
-</getRepo>
+</getRepoRequest>
 ```
 
 [:construction:]
