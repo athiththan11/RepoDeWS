@@ -60,6 +60,22 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="addRepoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="forks" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addRepoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="repo" type="tns:repo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:complexType name="developer">
         <xs:sequence>
           <xs:element name="username" type="xs:string"/>
@@ -82,6 +98,9 @@
   <wsdl:message name="addDeveloperResponse">
     <wsdl:part element="tns:addDeveloperResponse" name="addDeveloperResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="addRepoResponse">
+    <wsdl:part element="tns:addRepoResponse" name="addRepoResponse"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="deleteDeveloperResponse">
     <wsdl:part element="tns:deleteDeveloperResponse" name="deleteDeveloperResponse"></wsdl:part>
   </wsdl:message>
@@ -100,6 +119,9 @@
   <wsdl:message name="getRepoResponse">
     <wsdl:part element="tns:getRepoResponse" name="getRepoResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="addRepoRequest">
+    <wsdl:part element="tns:addRepoRequest" name="addRepoRequest"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="DevelopersPort">
     <wsdl:operation name="getDeveloper">
       <wsdl:input message="tns:getDeveloperRequest" name="getDeveloperRequest"></wsdl:input>
@@ -108,6 +130,10 @@
     <wsdl:operation name="addDeveloper">
       <wsdl:input message="tns:addDeveloperRequest" name="addDeveloperRequest"></wsdl:input>
       <wsdl:output message="tns:addDeveloperResponse" name="addDeveloperResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRepo">
+      <wsdl:input message="tns:addRepoRequest" name="addRepoRequest"></wsdl:input>
+      <wsdl:output message="tns:addRepoResponse" name="addRepoResponse"></wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deleteDeveloper">
       <wsdl:input message="tns:deleteDeveloperRequest" name="deleteDeveloperRequest"></wsdl:input>
@@ -135,6 +161,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="addDeveloperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRepo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addRepoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addRepoResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -192,4 +227,13 @@
          <dev:username>athiththan11</dev:username>\r
       </dev:getRepoRequest>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/getRepoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/getRepoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="79866101-f13b-45bf-bbb1-94ed89bc4a1d" isOneWay="false" action="" name="addRepo" bindingOperationName="addRepo" type="Request-Response" outputName="addRepoResponse" inputName="addRepoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e9eb958b-5c90-4311-be48-6dd98329adf9" name="Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://www.athiththan.com/devservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <dev:addRepoRequest>\r
+         <dev:name>repodews</dev:name>\r
+         <dev:username>athiththan11</dev:username>\r
+         <dev:forks>0</dev:forks>\r
+      </dev:addRepoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>hydrogen</con:username><con:password>pandaAsthma</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.athiththan.com/devservice/DevelopersPort/addRepoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
